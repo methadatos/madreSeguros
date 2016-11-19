@@ -22,7 +22,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class AseguradoraSessionBean {
-    @PersistenceContext
+    @PersistenceContext(unitName = "MadreSegurosPU")
     private EntityManager em;
     
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)

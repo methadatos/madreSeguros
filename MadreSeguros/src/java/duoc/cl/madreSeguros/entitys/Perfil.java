@@ -47,7 +47,7 @@ public class Perfil implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nombre", nullable = false, length = 45)
     private String nombre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfilIdperfil")
     private List<Usuario> usuarioList;
 
     public Perfil() {

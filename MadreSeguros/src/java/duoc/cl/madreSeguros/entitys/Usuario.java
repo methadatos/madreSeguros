@@ -10,8 +10,10 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -33,17 +35,21 @@ import javax.xml.bind.annotation.XmlTransient;
     @UniqueConstraint(columnNames = {"username"})})
 @XmlRootElement
 @NamedQueries({
+    @NamedQuery(name = "Usuario.validarUsuario",
+            query = "SELECT NEW duoc.cl.madreSeguros.dto.UsuarioDTO (u,u.perfilIdperfil)FROM Usuario u WHERE u.username=:username and u.password=:password"),
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.usuarioPK.idUsuario = :idUsuario"),
+    @NamedQuery(name = "Usuario.findByIdUsuario", query = "SELECT u FROM Usuario u WHERE u.idUsuario = :idUsuario"),
     @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre"),
     @NamedQuery(name = "Usuario.findByUsername", query = "SELECT u FROM Usuario u WHERE u.username = :username"),
-    @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password"),
-    @NamedQuery(name = "Usuario.findByPerfilIdperfil", query = "SELECT u FROM Usuario u WHERE u.usuarioPK.perfilIdperfil = :perfilIdperfil")})
+    @NamedQuery(name = "Usuario.findByPassword", query = "SELECT u FROM Usuario u WHERE u.password = :password")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected UsuarioPK usuarioPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idUsuario", nullable = false)
+    private Integer idUsuario;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -59,36 +65,32 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "password", nullable = false, length = 45)
     private String password;
-    @JoinColumn(name = "perfil_idperfil", referencedColumnName = "idperfil", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "perfil_idperfil", referencedColumnName = "idperfil", nullable = false)
     @ManyToOne(optional = false)
-    private Perfil perfil;
+    private Perfil perfilIdperfil;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioidUsuario")
     private List<Siniestro> siniestroList;
 
     public Usuario() {
     }
 
-    public Usuario(UsuarioPK usuarioPK) {
-        this.usuarioPK = usuarioPK;
+    public Usuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public Usuario(UsuarioPK usuarioPK, String nombre, String username, String password) {
-        this.usuarioPK = usuarioPK;
+    public Usuario(Integer idUsuario, String nombre, String username, String password) {
+        this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.username = username;
         this.password = password;
     }
 
-    public Usuario(int idUsuario, int perfilIdperfil) {
-        this.usuarioPK = new UsuarioPK(idUsuario, perfilIdperfil);
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public UsuarioPK getUsuarioPK() {
-        return usuarioPK;
-    }
-
-    public void setUsuarioPK(UsuarioPK usuarioPK) {
-        this.usuarioPK = usuarioPK;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNombre() {
@@ -115,12 +117,12 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
-    public Perfil getPerfil() {
-        return perfil;
+    public Perfil getPerfilIdperfil() {
+        return perfilIdperfil;
     }
 
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
+    public void setPerfilIdperfil(Perfil perfilIdperfil) {
+        this.perfilIdperfil = perfilIdperfil;
     }
 
     @XmlTransient
@@ -135,7 +137,7 @@ public class Usuario implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (usuarioPK != null ? usuarioPK.hashCode() : 0);
+        hash += (idUsuario != null ? idUsuario.hashCode() : 0);
         return hash;
     }
 
@@ -146,7 +148,7 @@ public class Usuario implements Serializable {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.usuarioPK == null && other.usuarioPK != null) || (this.usuarioPK != null && !this.usuarioPK.equals(other.usuarioPK))) {
+        if ((this.idUsuario == null && other.idUsuario != null) || (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
             return false;
         }
         return true;
@@ -154,7 +156,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "duoc.cl.madreSeguros.entitys.Usuario[ usuarioPK=" + usuarioPK + " ]";
+        return "duoc.cl.madreSeguros.entitys.Usuario[ idUsuario=" + idUsuario + " ]";
     }
     
 }
