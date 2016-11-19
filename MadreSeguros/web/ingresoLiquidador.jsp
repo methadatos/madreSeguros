@@ -9,9 +9,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Ingreso liquidador</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <fieldset><legend>Ingreso liquidador</legend>
+            <form name="formRegistroLiquidador" method="post" action="./ingresoLiquidador">
+                <table>
+                    <tr>
+                        <td>Rut</td>
+                        <td><input type="text" name="txtRut" placeholder="Ingrese el rut"/></td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td><input type="text" name="txtNombre" placeholder="Ingrese el nombre"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="btnGuardar" value="Guardar"/></td>
+                        <td><input type="reset" name="btnCancelar" value="Cancelar" onclick="window.location.href='Home.jsp'"/></td>
+                    </tr>
+                </table>
+            </form>
+        </fieldset>
     </body>
 </html>
