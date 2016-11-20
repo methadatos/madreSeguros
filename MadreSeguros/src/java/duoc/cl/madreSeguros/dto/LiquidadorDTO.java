@@ -4,37 +4,36 @@
  * and open the template in the editor.
  */
 package duoc.cl.madreSeguros.dto;
-import duoc.cl.madreSeguros.entitys.Aseguradora;
 
 /**
  *
- * @author Nicolas
+ * @author NicolasValenciaY
  */
-public class AseguradoraDTO {
-    private int idAseguradora;
+public class LiquidadorDTO {
+    private int idLiquidador;
     private String rut;
     private String nombre;
 
-    public AseguradoraDTO() {
+    public LiquidadorDTO() {
     }
 
-    public AseguradoraDTO(int idAseguradora, String rut, String nombre) {
-        this.idAseguradora = idAseguradora;
+    public LiquidadorDTO(int idLiquidador, String rut, String nombre) {
+        this.idLiquidador = idLiquidador;
         this.rut = rut;
         this.nombre = nombre;
     }
     
-    public AseguradoraDTO(String rut, String nombre) {
+    public LiquidadorDTO(String rut, String nombre) {
         this.rut = rut;
         this.nombre = nombre;
     }
 
-    public int getIdAseguradora() {
-        return idAseguradora;
+    public int getIdLiquidador() {
+        return idLiquidador;
     }
 
-    public void setIdAseguradora(int idAseguradora) {
-        this.idAseguradora = idAseguradora;
+    public void setIdLiquidador(int idLiquidador) {
+        this.idLiquidador = idLiquidador;
     }
 
     public String getRut() {
@@ -52,5 +51,8 @@ public class AseguradoraDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    
+    
     
 }

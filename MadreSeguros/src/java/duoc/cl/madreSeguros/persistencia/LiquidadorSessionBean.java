@@ -10,6 +10,7 @@ import duoc.cl.madreSeguros.entitys.Liquidador;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -20,20 +21,16 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class LiquidadorSessionBean {
 
-    @ PersistenceContext
+    @ PersistenceContext(unitName = "MadreSegurosPU")
     private EntityManager em;
-    @TransactionAttribute
-    public boolean agregarLiquidador(LiquidadorDTO liquidadorIngresado)throws ExcepcionesVarias{
-        try {
-            Liquidador infoLiquidador=new Liquidador();
+    
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    
+    public void agregarLiquidador(LiquidadorDTO liquidadorIngresado)throws ExcepcionesVarias{
+       Liquidador infoLiquidador=new Liquidador();
             infoLiquidador.setNombre(liquidadorIngresado.getNombre());
             infoLiquidador.setRut(liquidadorIngresado.getRut());
             em.persist(infoLiquidador);
-        return true;
-        } catch (Exception e) {
-            return false;
-        }
-        
     }
     
     public List<Liquidador>listadoLiquidador(){

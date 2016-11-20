@@ -9,9 +9,26 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Ingreso aseguradora</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <fieldset>
+            <form name="formularioIngresoAseguradora" method="post" action="">
+                <table>
+                    <tr>
+                        <td>RUT</td>
+                        <td><input type="text" name="txtRut"/></td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td><input type="text" name="txtNombre"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="btnGuardar" value="Guardar"/></td>
+                        <td><input type="reset" name="btnCancelar" value="Cancelar" onclick="window.location.href='Home.jsp'"/></td>
+                    </tr>
+                </table>
+            </form>
+        </fieldset>
     </body>
 </html>

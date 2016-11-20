@@ -17,11 +17,11 @@
                 <table>
                     <tr>
                         <td>Rut</td>
-                        <td><input type="text" name="txtRut" placeholder="Ingrese el rut"/></td>
+                        <td><input type="text" name="txtRut" placeholder="Ingrese el rut" required=""/></td>
                     </tr>
                     <tr>
                         <td>Nombre</td>
-                        <td><input type="text" name="txtNombre" placeholder="Ingrese el nombre"/></td>
+                        <td><input type="text" name="txtNombre" placeholder="Ingrese el nombre" required=""/></td>
                     </tr>
                     <tr>
                         <td><input type="submit" name="btnGuardar" value="Guardar"/></td>

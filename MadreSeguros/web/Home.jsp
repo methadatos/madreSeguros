@@ -20,7 +20,11 @@
         
         <c:otherwise>
             <jsp:useBean id="usuarioConectado" class="duoc.cl.madreSeguros.dto.UsuarioDTO" scope="session"/>
-            Hola: <c:out value="${usuarioConectado.usuario.nombre}"/>
+            Hola: <c:out value="${usuarioConectado.usuario.nombre}"/><br/>
+            <a href="ingresoAseguradora.jsp">Ingresar aseguradora</a><br/>
+            <a href="ingresoClaseSeguro.jsp">Ingresar clase seguro</a><br/>
+            
+            
         </c:otherwise>
     </c:choose>
     </body>

@@ -21,23 +21,17 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class DistribuidorSessionBean {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "MadreSegurosPU")
     private EntityManager em;
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     
-    private boolean agregarDistribuidor(DistribuidorDTO distribuidorIngresado){
+    public void agregarDistribuidor(DistribuidorDTO infoDistribuidorDTO)throws ExcepcionesVarias{
         Distribuidor infoDistribuidor=new Distribuidor();
-        
-        try {
-            infoDistribuidor.setRut(distribuidorIngresado.getRut());
-            infoDistribuidor.setNombre(distribuidorIngresado.getNombre());
-            infoDistribuidor.setNumeroContacto(distribuidorIngresado.getNumeroContacto());
-            infoDistribuidor.setCorreo(distribuidorIngresado.getCorreo());
-            em.persist(infoDistribuidor);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        infoDistribuidor.setRut(infoDistribuidorDTO.getRut());
+        infoDistribuidor.setNombre(infoDistribuidorDTO.getNombre());
+        infoDistribuidor.setNumeroContacto(infoDistribuidorDTO.getNumeroContacto());
+        infoDistribuidor.setCorreo(infoDistribuidorDTO.getCorreo());
+        em.persist(infoDistribuidor);
     }
     
     public List<Distribuidor>listadoDistribuidor(){
@@ -63,21 +57,6 @@ public class DistribuidorSessionBean {
         return false;
     }
     
-    public boolean updateDistribuidor(DistribuidorDTO distribuidorActualizado){
-        Distribuidor infoDistribuidor=new Distribuidor();
-        infoDistribuidor.setIddistribuidor(distribuidorActualizado.getIdDistribiudor());
-        infoDistribuidor.setRut(distribuidorActualizado.getRut());
-        infoDistribuidor.setNombre(distribuidorActualizado.getNombre());
-        infoDistribuidor.setNumeroContacto(distribuidorActualizado.getNumeroContacto());
-        infoDistribuidor.setCorreo(distribuidorActualizado.getCorreo());
-        for(Distribuidor distribuidor:listadoDistribuidor()){
-            if(distribuidor.equals(infoDistribuidor)){
-                em.createNamedQuery("");
-                return true;
-            }
-        }
-        return false;
-    }
     
     
 }

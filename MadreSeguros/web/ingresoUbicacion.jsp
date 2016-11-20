@@ -9,9 +9,24 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Ingreso ubicaciñon</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <fieldset><legend>Ingreso de ubicación</legend>
+            <form name="formularioIngresoUbicacion" method="post" action="/agregarUbicacion">
+                <table>
+                    <tr>
+                        <td>Ingreso nombre ubicación</td>
+                        <td><input type="text" name="txtNombre"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="btnGuardar" value="Agregar"/></td>
+                        <td><input type="reset" name="btnCancelar" value="Cancelar" onclick="window.location.href='Home.jsp'"/></td>
+                    </tr>
+                </table>
+
+            </form>
+
+        </fieldset>
     </body>
 </html>

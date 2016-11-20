@@ -27,12 +27,12 @@ public class AseguradoraSessionBean {
     
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     
-    public void agregarAseguradora(AseguradoraDTO aseguradoraIngresada){
+    public void agregarAseguradora(AseguradoraDTO aseguradoraIngresada)throws ExcepcionesVarias{
         Aseguradora infoAseguradora=new Aseguradora();
         infoAseguradora.setIdAseguradora(aseguradoraIngresada.getIdAseguradora());
         infoAseguradora.setNombre(aseguradoraIngresada.getNombre());
         infoAseguradora.setRut(aseguradoraIngresada.getRut());
-        em.merge(infoAseguradora);
+        em.persist(infoAseguradora);
     }
     
     public void eliminarAseguradora(AseguradoraDTO infoAseguradora){

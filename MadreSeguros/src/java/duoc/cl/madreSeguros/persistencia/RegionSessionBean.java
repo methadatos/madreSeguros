@@ -5,7 +5,13 @@
  */
 package duoc.cl.madreSeguros.persistencia;
 
+import duoc.cl.madreSeguros.dto.RegionDTO;
+import duoc.cl.madreSeguros.entitys.Region;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -13,7 +19,14 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class RegionSessionBean {
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @PersistenceContext(unitName = "MadreSegurosPU")
+    private EntityManager em;
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    
+    public void agregarRegion(RegionDTO infoRegionDTO)throws ExcepcionesVarias{
+        Region infoRegion=new Region();
+        infoRegion.setNombreRegion(infoRegionDTO.getNombreRegion());
+        em.persist(infoRegion);
+    }
+    
 }

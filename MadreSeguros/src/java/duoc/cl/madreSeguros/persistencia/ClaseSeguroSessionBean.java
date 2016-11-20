@@ -27,17 +27,10 @@ public class ClaseSeguroSessionBean {
     
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     
-    public boolean agregarClaseSeguro(ClaseSeguroDTO claseSeguroIngresada)throws ExcepcionesVarias{
-        try {
-            ClaseSeguro infoClaseSeguro=new ClaseSeguro();
-            infoClaseSeguro.setNombreClase(claseSeguroIngresada.getNombreClaseSeguro());
-            em.persist(infoClaseSeguro);
-            return true;
-            
-        } catch (Exception e) {
-            return false;
-        }
-        
+    public void agregarClaseSeguro(ClaseSeguroDTO claseSeguroIngresada)throws ExcepcionesVarias{
+        ClaseSeguro infoClaseSeguro=new ClaseSeguro();
+        infoClaseSeguro.setNombreClase(claseSeguroIngresada.getNombreClaseSeguro());
+        em.persist(infoClaseSeguro);
     }
     
     public ClaseSeguroDTO buscarXID(int idClaseSeguro){
