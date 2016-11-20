@@ -13,7 +13,7 @@
     </head>
     <body>
         <fieldset>
-            <form name="formularioIngresoPlataforma" method="post" action="/agregarPlataforma">
+            <form name="formularioIngresoPlataforma" method="post" action="./agregarPlataforma">
                 <table>
                     <tr>
                         <td>Nombre</td>

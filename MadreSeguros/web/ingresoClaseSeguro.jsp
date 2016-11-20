@@ -13,7 +13,7 @@
     </head>
     <body>
         <fieldset><legend>Ingresar clase seguro</legend>
-            <form name="formularioIngresoClaseSeguro" method="post" action="">
+            <form name="formularioIngresoClaseSeguro" method="post" action="./agregarClaseSeguro">
                 <table>
                     <tr>
                         <td>Nombre</td>

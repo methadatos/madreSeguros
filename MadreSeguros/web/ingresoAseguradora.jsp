@@ -13,7 +13,7 @@
     </head>
     <body>
         <fieldset>
-            <form name="formularioIngresoAseguradora" method="post" action="/agregarAseguradora">
+            <form name="formularioIngresoAseguradora" method="post" action="./agregarAseguradora">
                 <table>
                     <tr>
                         <td>RUT</td>

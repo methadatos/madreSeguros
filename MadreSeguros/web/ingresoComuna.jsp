@@ -17,7 +17,7 @@
         <jsp:useBean id="region" class="duoc.cl.madreSeguros.entitys.Region" scope="session"/>
         
         <fieldset>
-            <form name="FormularioIngresoComuna" method="post" action="/agregarComuna">
+            <form name="FormularioIngresoComuna" method="post" action="./agregarComuna">
                 <table>
                     <tr>
                         <td>Nombre</td>

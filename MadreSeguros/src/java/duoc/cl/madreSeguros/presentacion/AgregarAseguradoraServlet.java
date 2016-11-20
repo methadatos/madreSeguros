@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author NicolasValenciaY
  */
-@WebServlet(name = "AgregarAseguradoraServlet", urlPatterns = {"/agregarAseguradoraServlet","agregarAseguradora"})
+@WebServlet(name = "AgregarAseguradoraServlet", urlPatterns = {"/agregarAseguradoraServlet","/agregarAseguradora"})
 public class AgregarAseguradoraServlet extends HttpServlet {
 
     @EJB

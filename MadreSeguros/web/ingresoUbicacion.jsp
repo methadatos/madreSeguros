@@ -13,7 +13,7 @@
     </head>
     <body>
         <fieldset><legend>Ingreso de ubicación</legend>
-            <form name="formularioIngresoUbicacion" method="post" action="/agregarUbicacion">
+            <form name="formularioIngresoUbicacion" method="post" action="./agregarUbicacion">
                 <table>
                     <tr>
                         <td>Ingreso nombre ubicación</td>

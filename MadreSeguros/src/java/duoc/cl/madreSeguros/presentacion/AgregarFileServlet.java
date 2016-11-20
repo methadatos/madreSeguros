@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Nicolas
  */
-@WebServlet(name = "AgregarFileServlet", urlPatterns = {"/agregarFileServlet"})
+@WebServlet(name = "AgregarFileServlet", urlPatterns = {"/agregarFileServlet","/agregarFile"})
 public class AgregarFileServlet extends HttpServlet {
 
     @EJB

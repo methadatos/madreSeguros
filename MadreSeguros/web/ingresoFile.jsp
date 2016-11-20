@@ -28,8 +28,8 @@
         <jsp:useBean id="jefeZonal" class="duoc.cl.madreSeguros.entitys.JefeZonal"/>
         
         <fieldset>
-            <form>
-                <table>
+            <form name="formularioIngresoFile" method="post" action="./agregarFile">
+                <table> 
                     <tr>
                         <td>File</td>
                         <td><input type="text" name="txtNumeroFile" required=""></td>

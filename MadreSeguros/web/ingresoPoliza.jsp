@@ -20,7 +20,7 @@
         <jsp:useBean id="claseSeguro" class="duoc.cl.madreSeguros.entitys.ClaseSeguro"/>
         
         <fieldset>
-            <form name="formularioIngresoPoliza" method="post" action="/agregarPoliza">
+            <form name="formularioIngresoPoliza" method="post" action="./agregarPoliza">
                 <table>
                     <tr>
                         <td>Número póliza</td>
