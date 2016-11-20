@@ -35,6 +35,11 @@ public class AseguradoraSessionBean {
         em.persist(infoAseguradora);
     }
     
+    public List<Aseguradora>listadoAseguradora(){
+        return em.createNamedQuery("Aseguradora.findAll",Aseguradora.class)
+                .getResultList();
+    }
+    
     public void eliminarAseguradora(AseguradoraDTO infoAseguradora){
         em.remove(buscarAseguradora(infoAseguradora.getIdAseguradora()).getIdAseguradora());
     }

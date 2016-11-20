@@ -5,7 +5,14 @@
  */
 package duoc.cl.madreSeguros.persistencia;
 
+import duoc.cl.madreSeguros.dto.JefeZonalDTO;
+import duoc.cl.madreSeguros.entitys.JefeZonal;
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -14,6 +21,20 @@ import javax.ejb.Stateless;
 @Stateless
 public class JefeZonalSessionBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @PersistenceContext(unitName = "MadreSegurosPU")
+    private EntityManager em;
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    
+    public void agregarJefeZonal(JefeZonalDTO infoJefeZonalDTO)throws ExcepcionesVarias{
+        JefeZonal infoZonal=new JefeZonal();
+        infoZonal.setNombre(infoJefeZonalDTO.getNombre());
+        infoZonal.setCorreo(infoJefeZonalDTO.getCorreo());
+        infoZonal.setTelefono(infoJefeZonalDTO.getTelefono());
+        em.persist(infoZonal);
+    }
+    
+    public List<JefeZonal>listadoJefeZonal(){
+        return em.createNamedQuery("JefeZonal.findAll",JefeZonal.class)
+                .getResultList();
+    }
 }

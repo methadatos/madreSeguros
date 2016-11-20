@@ -5,7 +5,16 @@
  */
 package duoc.cl.madreSeguros.persistencia;
 
+import duoc.cl.madreSeguros.dto.PolizaDTO;
+import duoc.cl.madreSeguros.entitys.Aseguradora;
+import duoc.cl.madreSeguros.entitys.ClaseSeguro;
+import duoc.cl.madreSeguros.entitys.Poliza;
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -14,6 +23,23 @@ import javax.ejb.Stateless;
 @Stateless
 public class PolizaSessionBean {
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
+    @PersistenceContext(unitName = "MadreSegurosPU")
+    private EntityManager em;
+    @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
+    
+    public void agregarPoliza(PolizaDTO infoPolizaDTO)throws ExcepcionesVarias{
+        Poliza infoPoliza=new Poliza();
+        infoPoliza.setNumeroPoliza(infoPolizaDTO.getNumeroPoliza());
+        infoPoliza.setFechaEmision(infoPolizaDTO.getFechaEmision());
+        infoPoliza.setFechaVencimiento(infoPoliza.getFechaVencimiento());
+        Aseguradora aseguradora=em.find(Aseguradora.class, infoPolizaDTO.getIdAseguradora());
+        infoPoliza.setAseguradoraidAseguradora(aseguradora);
+        ClaseSeguro claseSeguro=em.find(ClaseSeguro.class, infoPolizaDTO.getIdClaseSeguro());
+        em.persist(infoPoliza);
+    }
+    
+    public List<Poliza>listadoPoliza(){
+        return em.createNamedQuery("Poliza.findAll",Poliza.class)
+                .getResultList();
+    }
 }

@@ -7,6 +7,7 @@ package duoc.cl.madreSeguros.persistencia;
 
 import duoc.cl.madreSeguros.dto.ComunaDTO;
 import duoc.cl.madreSeguros.entitys.Comuna;
+import duoc.cl.madreSeguros.entitys.Region;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -20,21 +21,16 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ComunaSessionBean {
-    @PersistenceContext
+    @PersistenceContext(unitName = "MadreSegurosPU")
     private EntityManager em;
     @TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
     
-    public boolean agregarComuna(ComunaDTO comunaAgregada)throws ExcepcionesVarias{
-        
-        try {
-            Comuna comunaEntity = new Comuna();
-            comunaEntity.setIdcomuna(comunaAgregada.getIdComuna());
-            comunaEntity.setNombre(comunaAgregada.getNombreComuna());
-            em.persist(comunaEntity);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public void agregarComuna(ComunaDTO comunaAgregada)throws ExcepcionesVarias{
+        Comuna infoComuna=new Comuna();
+        infoComuna.setNombre(comunaAgregada.getNombreComuna());
+        Region region=em.find(Region.class, comunaAgregada.getIdRegion());
+        infoComuna.setRegionIdregion(region);
+        em.persist(infoComuna);
     }
     
     public List<Comuna>listadoComunas(){
