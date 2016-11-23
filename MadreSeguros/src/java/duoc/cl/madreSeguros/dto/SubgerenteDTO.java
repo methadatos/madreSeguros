@@ -5,11 +5,13 @@
  */
 package duoc.cl.madreSeguros.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nicolas
  */
-public class SubgerenteDTO {
+public class SubgerenteDTO implements Serializable{
     private int idSubgerente;
     private String nombreSubgerente;
     private String zona;

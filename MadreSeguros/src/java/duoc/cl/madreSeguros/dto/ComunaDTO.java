@@ -5,11 +5,13 @@
  */
 package duoc.cl.madreSeguros.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nicolas
  */
-public class ComunaDTO {
+public class ComunaDTO implements Serializable{
     private int idComuna;
     private String nombreComuna;
     private int idRegion;

@@ -5,13 +5,14 @@
  */
 package duoc.cl.madreSeguros.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Nicolas
  */
-public class SiniestroDTO {
+public class SiniestroDTO implements Serializable{
     private int idSiniestro;
     private int numeroSiniestro;
     private int montoSiniestro;

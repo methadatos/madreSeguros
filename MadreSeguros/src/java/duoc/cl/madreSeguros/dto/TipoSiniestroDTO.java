@@ -5,11 +5,13 @@
  */
 package duoc.cl.madreSeguros.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nicolas
  */
-public class TipoSiniestroDTO {
+public class TipoSiniestroDTO implements Serializable{
     private int idTipoSiniestro;
     private String nombreCategoria;
 

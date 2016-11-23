@@ -5,11 +5,13 @@
  */
 package duoc.cl.madreSeguros.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nicolas
  */
-public class FileDTO {
+public class FileDTO implements Serializable{
     private int numeroFile;
     private int region;
     private String direccion;

@@ -7,12 +7,13 @@ package duoc.cl.madreSeguros.dto;
 
 import duoc.cl.madreSeguros.entitys.Perfil;
 import duoc.cl.madreSeguros.entitys.Usuario;
+import java.io.Serializable;
 
 /**
  *
  * @author Nicolas
  */
-public class UsuarioDTO {
+public class UsuarioDTO implements Serializable{
     private Usuario usuario;
     private Perfil perfil;
 

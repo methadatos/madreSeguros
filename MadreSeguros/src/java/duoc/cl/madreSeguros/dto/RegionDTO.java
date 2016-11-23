@@ -5,11 +5,13 @@
  */
 package duoc.cl.madreSeguros.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author NicolasValenciaY
  */
-public class RegionDTO {
+public class RegionDTO implements Serializable{
     private int idRegion;
     private String nombreRegion;
 

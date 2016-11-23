@@ -5,11 +5,13 @@
  */
 package duoc.cl.madreSeguros.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author NicolasValenciaY
  */
-public class ClaseSeguroDTO {
+public class ClaseSeguroDTO implements Serializable{
     private int idClaseSeguro;
     private String nombreClaseSeguro;
 

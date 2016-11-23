@@ -5,13 +5,14 @@
  */
 package duoc.cl.madreSeguros.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Nicolas
  */
-public class PolizaDTO {
+public class PolizaDTO implements Serializable{
     private int numeroPoliza;
     private Date fechaEmision;
     private Date fechaVencimiento;

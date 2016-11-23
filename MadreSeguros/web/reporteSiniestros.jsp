@@ -40,7 +40,7 @@
                     <td><c:out value="${siniestro.liquidadorIdliquidador.nombre}"/></td>
                     <td><c:out value="${siniestro.usuarioidUsuario.nombre}"/></td>
                 </tr>
-            </c:forEach>
+                </c:forEach>
             </tbody>
         </table><br/>
         <button name="btnAtras" onclick="window.location.href='Home.jsp'">Atrás</button>
